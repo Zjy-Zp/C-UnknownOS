@@ -1,14 +1,3 @@
----
-AIGC:
-    Label: "1"
-    ContentProducer: 001191440300708461136T1XGW3
-    ProduceID: 0a49692c9e8a806948f690d4834b2457_fcfd3ce0e09e11f189bc525400248c00
-    ReservedCode1: iDiUwjqlw2tv+l9qUHPKkksHBryzEC6oolexbgq1OUYgwqzqV+RyMzUcT+gc2YJT3h+IO0LYI0+bzGbu3hIUP6N2W0XXDkhIUbKGIDWnK+2a0ZRCOFWXErtluGBWTAmdSI/DdVsq1E6sjJc4kj4cqAelxopb0tcVvz1Bzo9Mm8IrMlYxHrRYRcAiymA=
-    ContentPropagator: 001191440300708461136T1XGW3
-    PropagateID: 0a49692c9e8a806948f690d4834b2457_fcfd3ce0e09e11f189bc525400248c00
-    ReservedCode2: iDiUwjqlw2tv+l9qUHPKkksHBryzEC6oolexbgq1OUYgwqzqV+RyMzUcT+gc2YJT3h+IO0LYI0+bzGbu3hIUP6N2W0XXDkhIUbKGIDWnK+2a0ZRCOFWXErtluGBWTAmdSI/DdVsq1E6sjJc4kj4cqAelxopb0tcVvz1Bzo9Mm8IrMlYxHrRYRcAiymA=
----
-
 # cunos 系统简介
 
 > cunos 是一个从零手写、能在真实硬件与 QEMU 上直接启动的 32 位 i386 保护模式操作系统内核，
