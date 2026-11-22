@@ -10,17 +10,31 @@ const releases = computed(() => data.releases || [])
 const latest = computed(() => releases.value[0] || null)
 const history = computed(() => releases.value.slice(1))
 
-function pickMain(release) {
-  if (!release) return null
-  const iso = release.assets.filter((a) => /\.iso$/i.test(a.name))
-  const pool = iso.length ? iso : release.assets
-  return pool.find((a) => /^cunos\.iso$/i.test(a.name)) || pool[0] || null
+// 从文件名解析构建编号：cunos_v75.iso -> 75（无编号返回 -1）
+function buildNo(name) {
+  const m = /^cunos_v(\d+)\.iso$/i.exec(name || '')
+  return m ? parseInt(m[1], 10) : -1
 }
 
+// 当前发布批次下的所有 ISO，按构建编号从新到旧排序
+const isos = computed(() => {
+  const list = ((latest.value && latest.value.assets) || []).filter((a) => /\.iso$/i.test(a.name))
+  return list.slice().sort((a, b) => buildNo(b.name) - buildNo(a.name))
+})
+
+// 最新构建＝编号最大的 cunos_vN.iso；没有编号时才退回 cunos.iso
+function pickMain() {
+  const list = isos.value
+  const numbered = list.filter((a) => buildNo(a.name) >= 0)
+  if (numbered.length) return numbered[0]
+  return list.find((a) => /^cunos\.iso$/i.test(a.name)) || list[0] || null
+}
+
+// 旧版本＝除最新构建以外的全部镜像
 function others(release) {
   if (!release) return []
-  const main = pickMain(release)
-  return release.assets.filter((a) => !main || a.name !== main.name)
+  const main = pickMain()
+  return isos.value.filter((a) => !main || a.name !== main.name)
 }
 
 function fmtSize(bytes) {
@@ -36,12 +50,16 @@ function fmtDate(iso) {
   return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`
 }
 
-const latestMain = computed(() => pickMain(latest.value))
+const latestMain = computed(() => pickMain())
+const latestLabel = computed(() => {
+  const n = buildNo(latestMain.value && latestMain.value.name)
+  return n >= 0 ? `cunos v${n}` : latestMain.value ? latestMain.value.name : ''
+})
 </script>
 
 # 下载 cunos
 
-页面数据在每次站点构建时从 GitHub Releases 自动抓取，发布新版本后无需修改文档，重新部署即可同步。
+页面数据在每次站点构建时从 GitHub Releases 自动抓取，发布新版本后站点会自动重建，无需手动操作。
 
 <div v-if="data.error" class="dl-warn">
 
@@ -62,10 +80,10 @@ const latestMain = computed(() => pickMain(latest.value))
 <div class="dl-hero">
   <div class="dl-hero-main">
     <div class="dl-ver">
-      {{ latest.name }}
+      {{ latestLabel }}
       <span v-if="latest.prerelease" class="dl-badge">预发布</span>
     </div>
-    <div class="dl-meta">标签 <code>{{ latest.tag }}</code> · 发布于 {{ fmtDate(latest.publishedAt) }}</div>
+    <div class="dl-meta">发布于 {{ fmtDate(latest.publishedAt) }}</div>
   </div>
   <a v-if="latestMain" class="dl-btn" :href="latestMain.downloadUrl" download>
     下载 {{ latestMain.name }}（{{ fmtSize(latestMain.size) }}）
@@ -78,7 +96,8 @@ const latestMain = computed(() => pickMain(latest.value))
 
 <div v-if="others(latest).length">
 
-同一版本的其他镜像文件：
+<details class="dl-older">
+<summary>旧版本构建镜像（{{ others(latest).length }} 个，仅用于回溯）</summary>
 
 <table class="dl-table">
   <thead>
@@ -93,6 +112,8 @@ const latestMain = computed(() => pickMain(latest.value))
     </tr>
   </tbody>
 </table>
+
+</details>
 
 </div>
 
@@ -114,7 +135,6 @@ const latestMain = computed(() => pickMain(latest.value))
         <td v-if="i === 0" :rowspan="rel.assets.length || 1">
           <strong>{{ rel.name }}</strong>
           <span v-if="rel.prerelease" class="dl-badge">预发布</span>
-          <div class="dl-tag"><code>{{ rel.tag }}</code></div>
         </td>
         <td v-if="i === 0" :rowspan="rel.assets.length || 1">{{ fmtDate(rel.publishedAt) }}</td>
         <td><code v-if="a">{{ a.name }}</code><span v-else>—</span></td>
@@ -218,5 +238,18 @@ Release 资产未附带独立的校验文件。下载后可比对文件大小与
   margin-top: 4px;
   font-size: 12px;
   color: var(--vp-c-text-3);
+}
+.dl-older {
+  margin-top: 16px;
+}
+.dl-older > summary {
+  cursor: pointer;
+  color: var(--vp-c-text-2);
+  font-size: 14px;
+  padding: 6px 0;
+  user-select: none;
+}
+.dl-older > summary:hover {
+  color: var(--vp-c-brand-1);
 }
 </style>
