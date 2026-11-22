@@ -29,6 +29,7 @@ export default defineConfig({
 
     nav: [
       { text: '指南', link: '/guide/', activeMatch: '/guide/' },
+      { text: '下载', link: '/download/', activeMatch: '/download/' },
       { text: '架构', link: '/arch/', activeMatch: '/arch/' },
       { text: '开发', link: '/dev/', activeMatch: '/dev/' },
       { text: 'VMM', link: '/vmm/', activeMatch: '/vmm/' },
@@ -36,6 +37,16 @@ export default defineConfig({
     ],
 
     sidebar: {
+      '/download/': [
+        {
+          text: '下载',
+          items: [
+            { text: '最新版本', link: '/download/#最新版本' },
+            { text: '历史版本', link: '/download/#历史版本' },
+            { text: '拿到 ISO 之后', link: '/download/#拿到-iso-之后' }
+          ]
+        }
+      ],
       '/guide/': [
         {
           text: '入门',

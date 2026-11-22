@@ -6,3 +6,4 @@ node_modules/
 Thumbs.db
 .vitepress/*.timestamp-*.mjs
 .vitepress/.temp/
+**/*.timestamp-*.mjs
