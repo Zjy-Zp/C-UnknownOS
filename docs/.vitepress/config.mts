@@ -29,6 +29,7 @@ export default defineConfig({
 
     nav: [
       { text: '指南', link: '/guide/', activeMatch: '/guide/' },
+      { text: '手册', link: '/manual/', activeMatch: '/manual/' },
       { text: '下载', link: '/download/', activeMatch: '/download/' },
       { text: '架构', link: '/arch/', activeMatch: '/arch/' },
       { text: '开发', link: '/dev/', activeMatch: '/dev/' },
@@ -37,6 +38,96 @@ export default defineConfig({
     ],
 
     sidebar: {
+      '/manual/': [
+        {
+          text: '手册总览',
+          items: [
+            { text: '四份手册与阅读顺序', link: '/manual/' }
+          ]
+        },
+        {
+          text: '操作指南',
+          collapsed: true,
+          items: [
+            { text: '本篇概览', link: '/manual/user-guide' },
+            { text: '1. 版本与术语约定', link: '/manual/user-guide#_1-版本与术语约定' },
+            { text: '2. 启动与进入 shell', link: '/manual/user-guide#_2-启动与进入-shell' },
+            { text: '3. 终端提示符与路径语义', link: '/manual/user-guide#_3-终端提示符与路径语义' },
+            { text: '4. 命令行输入规则', link: '/manual/user-guide#_4-命令行输入规则' },
+            { text: '5. shell 命令全表', link: '/manual/user-guide#_5-shell-命令全表' },
+            { text: '6. `/bin` 程序清单', link: '/manual/user-guide#_6-bin-程序清单' },
+            { text: '7. 编辑器使用', link: '/manual/user-guide#_7-编辑器使用' },
+            { text: '8. 输入法（IME）', link: '/manual/user-guide#_8-输入法-ime' },
+            { text: '9. 文件系统与磁盘操作', link: '/manual/user-guide#_9-文件系统与磁盘操作' },
+            { text: '10. 图形与桌面', link: '/manual/user-guide#_10-图形与桌面' },
+            { text: '11. 网络配置与测试', link: '/manual/user-guide#_11-网络配置与测试' },
+            { text: '12. 常见操作流程', link: '/manual/user-guide#_12-常见操作流程' },
+            { text: '13. 已知限制速查', link: '/manual/user-guide#_13-已知限制速查' },
+            { text: '14. 一页速查', link: '/manual/user-guide#_14-一页速查' }
+          ]
+        },
+        {
+          text: '架构指南',
+          collapsed: true,
+          items: [
+            { text: '本篇概览', link: '/manual/architecture' },
+            { text: '1. 代码地图', link: '/manual/architecture#_1-代码地图' },
+            { text: '2. 启动链路', link: '/manual/architecture#_2-启动链路' },
+            { text: '3. 特权级与中断底座', link: '/manual/architecture#_3-特权级与中断底座' },
+            { text: '4. 分页与内存管理', link: '/manual/architecture#_4-分页与内存管理' },
+            { text: '5. 进程与调度', link: '/manual/architecture#_5-进程与调度' },
+            { text: '6. ELF 装载', link: '/manual/architecture#_6-elf-装载' },
+            { text: '7. 系统调用分发', link: '/manual/architecture#_7-系统调用分发' },
+            { text: '8. VFS 与文件系统', link: '/manual/architecture#_8-vfs-与文件系统' },
+            { text: '9. 块层', link: '/manual/architecture#_9-块层' },
+            { text: '10. 网络栈', link: '/manual/architecture#_10-网络栈' },
+            { text: '11. 图形栈', link: '/manual/architecture#_11-图形栈' },
+            { text: '12. 输入栈', link: '/manual/architecture#_12-输入栈' },
+            { text: '13. ACPI / PCI / USB', link: '/manual/architecture#_13-acpi-pci-usb' },
+            { text: '14. 安装器与内嵌载荷', link: '/manual/architecture#_14-安装器与内嵌载荷' },
+            { text: '15. 未实现能力汇总（架构层面）', link: '/manual/architecture#_15-未实现能力汇总-架构层面' },
+            { text: '16. 源码索引表', link: '/manual/architecture#_16-源码索引表' }
+          ]
+        },
+        {
+          text: '开发指南',
+          collapsed: true,
+          items: [
+            { text: '本篇概览', link: '/manual/developer' },
+            { text: '1. 环境与工具链', link: '/manual/developer#_1-环境与工具链' },
+            { text: '2. 构建系统', link: '/manual/developer#_2-构建系统' },
+            { text: '3. 仓库地图与阅读顺序', link: '/manual/developer#_3-仓库地图与阅读顺序' },
+            { text: '4. 加一条内核内建命令（完整流程）', link: '/manual/developer#_4-加一条内核内建命令-完整流程' },
+            { text: '5. 加一个 `/bin` 用户态程序', link: '/manual/developer#_5-加一个-bin-用户态程序' },
+            { text: '6. 加一个网卡驱动', link: '/manual/developer#_6-加一个网卡驱动' },
+            { text: '7. 加系统调用', link: '/manual/developer#_7-加系统调用' },
+            { text: '8. 改文件系统 / 路径层', link: '/manual/developer#_8-改文件系统-路径层' },
+            { text: '9. 改图形 / 桌面', link: '/manual/developer#_9-改图形-桌面' },
+            { text: '10. 验证方法论（本项目硬要求）', link: '/manual/developer#_10-验证方法论-本项目硬要求' },
+            { text: '11. 代码规范与约定（从现有代码反推）', link: '/manual/developer#_11-代码规范与约定-从现有代码反推' },
+            { text: '12. 常见编译/运行故障', link: '/manual/developer#_12-常见编译-运行故障' },
+            { text: '13. 提交前自检清单', link: '/manual/developer#_13-提交前自检清单' }
+          ]
+        },
+        {
+          text: '实体机配置参考',
+          collapsed: true,
+          items: [
+            { text: '本篇概览', link: '/manual/hardware' },
+            { text: '1. 最低可运行配置', link: '/manual/hardware#_1-最低可运行配置' },
+            { text: '2. 引导方式与固件设置', link: '/manual/hardware#_2-引导方式与固件设置' },
+            { text: '3. 安装到硬盘的两种方式', link: '/manual/hardware#_3-安装到硬盘的两种方式' },
+            { text: '4. 输入设备：实机的最大不确定性', link: '/manual/hardware#_4-输入设备-实机的最大不确定性' },
+            { text: '5. 网卡支持清单', link: '/manual/hardware#_5-网卡支持清单' },
+            { text: '6. 存储控制器', link: '/manual/hardware#_6-存储控制器' },
+            { text: '7. 显示与图形', link: '/manual/hardware#_7-显示与图形' },
+            { text: '8. 实机排障表', link: '/manual/hardware#_8-实机排障表' },
+            { text: '9. 实机与 QEMU 的差异清单', link: '/manual/hardware#_9-实机与-qemu-的差异清单' },
+            { text: '10. 上机检查单（照着走）', link: '/manual/hardware#_10-上机检查单-照着走' },
+            { text: '11. 明确不支持（别浪费时间试）', link: '/manual/hardware#_11-明确不支持-别浪费时间试' }
+          ]
+        }
+      ],
       '/download/': [
         {
           text: '下载',
