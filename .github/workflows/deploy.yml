@@ -37,10 +37,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 仓库名为 <user>.github.io 时 base 用 /，否则用 /<repo>/
+      # 站点通过自定义域名 cunos.7891dick.cc.cd 提供服务，站点根即 /，base 必须为 /
       - name: Build site
         env:
-          DOCS_BASE: ${{ endsWith(github.event.repository.name, '.github.io') && '/' || format('/{0}/', github.event.repository.name) }}
+          DOCS_BASE: '/'
         run: |
           echo "DOCS_BASE=$DOCS_BASE"
           npm run build
