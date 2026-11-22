@@ -6,6 +6,12 @@ on:
     paths:
       - 'docs/**'
       - '.github/workflows/deploy.yml'
+  # 下载页展示的是构建时抓取的 Releases 快照，发版后必须自动重建
+  release:
+    types: [published, edited, released, prereleased]
+  # 兜底定期重建，防止事件丢失导致快照长期陈旧
+  schedule:
+    - cron: '17 */6 * * *'
   workflow_dispatch:
 
 permissions:
