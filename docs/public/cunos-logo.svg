@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="536" height="160" viewBox="0 0 536 160" role="img" aria-label="cunos">
+  
+  <g transform="translate(16,16) scale(0.5)">
+    <g id="mark">
+    <rect id="boundary" x="18" y="18" width="220" height="220" rx="46"
+          fill="none" stroke="#1F6FEB" stroke-width="16"/>
+    <path id="ring0" d="M 185.52 156.06 A 64.0 64.0 0 1 1 185.52 99.94 L 163.95 110.47 A 40.0 40.0 0 1 0 163.95 145.53 Z" fill="#1F6FEB"/>
+    <rect id="cursor" x="168" y="108" width="16" height="40" fill="#1F6FEB"/>
+    <g id="page-blocks">
+            <rect x="105" y="105" width="20" height="20" fill="#1F6FEB"/>
+      <rect x="131" y="105" width="20" height="20" fill="#1F6FEB"/>
+      <rect x="105" y="131" width="20" height="20" fill="#1F6FEB"/>
+      <rect x="131" y="131" width="20" height="20" fill="#1F6FEB"/>
+    </g>
+  </g>
+  </g>
+  <g id="wordmark" fill="none" stroke="#1F6FEB" stroke-width="13.0"
+     stroke-linecap="butt" stroke-linejoin="miter">
+    <path id="l-c" d="M 229.63 93.51 A 25.5 25.5 0 1 1 229.63 66.49"/>
+    <path id="l-u" d="M 256.5 48.0 V 80 A 25.5 25.5 0 0 0 307.5 80 V 48.0"/>
+    <path id="l-n" d="M 333.5 48.0 V 112.0 M 333.5 54.5 A 25.5 25.5 0 0 1 384.5 54.5 V 112.0"/>
+    <circle cx="433.0" cy="80" r="25.5" stroke="#1F6FEB" fill="none"/>
+    <path id="l-s" d="M 507.46 62.89 A 12.75 12.75 0 1 0 495.48 80.0 A 12.75 12.75 0 1 1 483.5 88.39"/>
+  </g>
+</svg>

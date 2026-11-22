@@ -1,0 +1,15 @@
+{
+  "name": "cunos-docs",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "cunos 操作系统内核文档站",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.3"
+  }
+}
